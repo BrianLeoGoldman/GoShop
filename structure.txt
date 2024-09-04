@@ -7,8 +7,13 @@ ROOT FOLDER
 |-> /service (directory to store all services)
 |   |-> /user (directory to contain services for user logic)
 |       |-> routes.go (a service to contain the handlers functions for user endpoints)
+|       |-> store.go (a service)
 |-> /db (directory for database files)
 |   |-> db.go
 |-> /config (directory for configuration files)
 |   |-> env.go (file for environment variables)
-|-> /types (directory)
+|-> /types (directory for basic structs of the api)
+|   |-> types.go
+|-> utils
+|   |-> utils.go
+|-> .env (file for environment variables)
