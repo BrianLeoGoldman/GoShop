@@ -2,6 +2,8 @@ package config
 
 import (
 	"fmt"
+	"github.com/lpernett/godotenv"
+	"log"
 	"os"
 )
 
@@ -17,6 +19,10 @@ type Config struct {
 var Envs = initConfig()
 
 func initConfig() Config {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal(err)
+	}
 	return Config{
 		PublicHost: getEnv("PUBLIC_HOST", "http://localhost"),
 		Port:       getEnv("PORT", "8080"),
