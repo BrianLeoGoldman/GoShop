@@ -9,6 +9,7 @@ import (
 
 // Handler struct is a service
 type Handler struct {
+	store *types.UserStore
 }
 
 func NewHandler() *Handler {
