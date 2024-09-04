@@ -1,4 +1,9 @@
 ROOT FOLDER
-|-> cmd (directory to store all entrypoint of the application)
-    |-> api
-    |-> migrate (separate program from the api)
+|-> /cmd (directory to store all entrypoint of the application)
+|   |-> main.go (entrypoint for the api)
+|   |-> /api
+|   |   |-> api.go
+|   |-> /migrate (separate program from the api)
+|-> /service (directory)
+    |-> /user
+        |-> routes.go
