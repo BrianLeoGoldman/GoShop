@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"github.com/brianleogoldman/goshop/cmd/api"
 	"github.com/brianleogoldman/goshop/config"
 	database "github.com/brianleogoldman/goshop/db"
@@ -21,8 +22,17 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	initStorage(db)
 	server := api.NewAPIServer(":8080", db)
 	if err := server.Run(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func initStorage(db *sql.DB) {
+	err := db.Ping()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("DB successfully connected!")
 }

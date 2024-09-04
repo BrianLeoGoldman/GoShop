@@ -10,4 +10,5 @@ ROOT FOLDER
 |-> /db (directory for database files)
 |   |-> db.go
 |-> /config (directory for configuration files)
-    |-> env.go (file for environment variables)
+|   |-> env.go (file for environment variables)
+|-> /types (directory)
