@@ -1,0 +1,4 @@
+ROOT FOLDER
+|-> cmd (directory to store all entrypoint of the application)
+    |-> api
+    |-> migrate (separate program from the api)
