@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/brianleogoldman/goshop/cmd/api"
+	"github.com/brianleogoldman/goshop/config"
 	database "github.com/brianleogoldman/goshop/db"
 	"github.com/go-sql-driver/mysql"
 	"log"
@@ -9,15 +10,18 @@ import (
 
 func main() {
 	db, err := database.NewMySQLStorage(mysql.Config{
-		User:                 "root",
-		Passwd:               "pass123",
-		Addr:                 "127.0.0.1:3306",
-		DBName:               "goshop",
+		User:                 config.Envs.DBUser,
+		Passwd:               config.Envs.DBPassword,
+		Addr:                 config.Envs.DBAddress,
+		DBName:               config.Envs.DBName,
 		Net:                  "tcp",
 		AllowNativePasswords: true,
 		ParseTime:            true,
 	})
-	server := api.NewAPIServer(":8080", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	server := api.NewAPIServer(":8080", db)
 	if err := server.Run(); err != nil {
 		log.Fatal(err)
 	}
