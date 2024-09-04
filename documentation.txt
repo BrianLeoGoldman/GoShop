@@ -4,6 +4,6 @@ ROOT FOLDER
 |   |-> /api
 |   |   |-> api.go
 |   |-> /migrate (separate program from the api)
-|-> /service (directory)
-    |-> /user
-        |-> routes.go
+|-> /service (directory to store all services)
+    |-> /user (directory to contain services for user logic)
+        |-> routes.go (a service to contain the handlers functions for user endpoints)
