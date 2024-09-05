@@ -2,6 +2,7 @@ package user
 
 import (
 	"fmt"
+	"github.com/brianleogoldman/goshop/service/auth"
 	"github.com/brianleogoldman/goshop/types"
 	"github.com/brianleogoldman/goshop/utils"
 	"github.com/gorilla/mux"
@@ -37,11 +38,17 @@ func (h *Handler) handleRegister(w http.ResponseWriter, r *http.Request) {
 		utils.WriteError(w, http.StatusBadRequest, fmt.Errorf("user with email %s already exists", payload.Email))
 		return
 	}
+
+	hashedPassword, err := auth.HashPassword(payload.Password)
+	if err != nil {
+		utils.WriteError(w, http.StatusInternalServerError, err)
+	}
+
 	err = h.store.CreateUser(types.User{
 		FirstName: payload.FirstName,
 		LastName:  payload.LastName,
 		Email:     payload.Email,
-		Password:  payload.Password,
+		Password:  hashedPassword,
 		CreatedAt: time.Now(),
 	})
 	if err != nil {

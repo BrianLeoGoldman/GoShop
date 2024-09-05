@@ -6,8 +6,10 @@ ROOT FOLDER
 |   |-> /migrate (separate program from the api)
 |-> /service (directory to store all services)
 |   |-> /user (directory to contain services for user logic)
-|       |-> routes.go (a service to contain the handlers functions for user endpoints)
-|       |-> store.go (a service)
+|   |   |-> routes.go (a service to contain the handlers functions for user endpoints)
+|   |   |-> store.go (a service)
+|   |-> /auth
+|       |-> password.go
 |-> /db (directory for database files)
 |   |-> db.go
 |-> /config (directory for configuration files)
